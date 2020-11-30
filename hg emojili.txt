@@ -1,0 +1,42 @@
+//-----------------------HOÞ-GELDÝN-MESAJI----------------------\\
+
+client.on("guildMemberAdd", member => {
+    require("moment-duration-format")
+      var üyesayýsý = member.guild.members.cache.size.toString().replace(/ /g, "    ")
+      var üs = üyesayýsý.match(/([0-9])/g)
+      üyesayýsý = üyesayýsý.replace(/([a-zA-Z])/g, "bilinmiyor").toLowerCase()
+      if(üs) {
+        üyesayýsý = üyesayýsý.replace(/([0-9])/g, d => {
+          return {
+            '0': `<a:sifir:759741071889924097>`,
+            '1': `<a:bir:759741070190968884>`,
+            '2': `<a:iki:759741070778695720>`,
+            '3': `<a:uc:759741071567355924>`,
+            '4': `<a:dort:759741070661124136>`,
+            '5': `<a:bes:759741063656243230>`,
+            '6': `<a:alt:759741042534121503>`,
+            '7': `<a:yedi:759741071096807456>`,
+            '8': `<a:sekiz:759741072095707167>`,
+            '9': `<a:dokuz:759741071772614697>`}[d];
+          })
+        }
+    const kanal = member.guild.channels.cache.find(r => r.id === "777905217479376896");
+    let user = client.users.cache.get(member.id);
+    require("moment-duration-format");
+      const kurulus = new Date().getTime() - user.createdAt.getTime();  
+   
+    var kontrol;
+  if (kurulus < 1296000000) kontrol = 'Hesap Durumu: Güvenilir Deðil.'
+  if (kurulus > 1296000000) kontrol = 'Hesap Durumu: Güvenilir Gözüküyor.'
+    moment.locale("tr");
+    const embed = new Discord.MessageEmbed()
+    .setAuthor(member.guild.name, member.guild.iconURL({ dynamic: true }))
+    .setThumbnail(member.user.avatarURL({ dynamic: true }))
+    .setColor('0x2f3136')
+    .setDescription("\n**"+member.user.username+"  Aramýza Katýldý. \n\nSes Odalarýnda Teyit Vererek Kayýt Olabilirsin. \n\n<@&777904969088630814> Rolündekiler Seninle Ýlgilenecektir. \n\nSeninle Birlikte "+üyesayýsý+" Kiþiyiz. \n\nHesabýn: `" + moment(member.user.createdAt).format("\`YYYY DD MMMM dddd\`") +  "` Tarihinde Oluþturulmuþ. \n\n"+kontrol+" \n\nTagýmýzý Alarak ` ? ` Bize Destek Olabilirsin.**")
+    kanal.send(`<@${member.user.id}>`)
+    kanal.send(embed)
+});
+  
+
+//-----------------------HOÞ-GELDÝN-MESAJI----------------------\\
